@@ -52,6 +52,7 @@ exports.direct = function() {
  * - `ftp`: Proxy host to use for FTP requests
  * - `http`: Proxy host to use for HTTP requests
  * - `https`: Proxy host to use for HTTPS requests
+ * - `socks`: Proxy host to use for Socks requests
  * - `bypass`: A list of hosts requests should directly connect to,
  *     bypassing any other proxies for that request. May be specified as a
  *     comma separated string, or a list of strings.
@@ -62,6 +63,7 @@ exports.direct = function() {
  * @param {{ftp: (string|undefined),
  *          http: (string|undefined),
  *          https: (string|undefined),
+ *          socks: (string|undefined),
  *          bypass: (string|!Array.<string>|undefined)}} options Proxy
  *     configuration options.
  * @return {!webdriver.ProxyConfig} A new proxy configuration object.
@@ -72,6 +74,7 @@ exports.manual = function(options) {
     ftpProxy: options.ftp,
     httpProxy: options.http,
     sslProxy: options.https,
+    socksProxy: options.socks,
     noProxy: util.isArray(options.bypass) ?
         options.bypass.join(',') : options.bypass
   };
